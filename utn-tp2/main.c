@@ -128,7 +128,7 @@ int main() {
                                 printEmployees(employee, SIZE);
                             }
                             break;
-                        case 2:;
+                        case 2:
                             printf("----------------------------------------------------------------------------------\n");
                             printf("| Total de empleados: %d\n", quantityOfEmployees);
                             printf("| Total de salarios: %.2lf\n", getAllSalaries(employee, SIZE));

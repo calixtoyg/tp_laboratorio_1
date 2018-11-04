@@ -1,3 +1,0 @@
-C:/Users/yasir/Desktop/Proyectos UTN/tp_laboratorio_1/utn-tp3/cmake-build-debug/CMakeFiles/edit_cache.dir
-C:/Users/yasir/Desktop/Proyectos UTN/tp_laboratorio_1/utn-tp3/cmake-build-debug/CMakeFiles/Win_64.dir
-C:/Users/yasir/Desktop/Proyectos UTN/tp_laboratorio_1/utn-tp3/cmake-build-debug/CMakeFiles/rebuild_cache.dir

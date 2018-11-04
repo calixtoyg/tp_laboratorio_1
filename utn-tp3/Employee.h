@@ -13,16 +13,16 @@ Employee *employee_newWithData(int id, char *name, int salary, int manHours);
 void employee_delete();
 
 int employee_setId(Employee* employee,int id);
-int employee_getId(Employee* employee,int* id);
+int employee_getId(Employee* employee);
 
-int employee_setNombre(Employee* employee,char* nombre);
-int employee_getNombre(Employee* employee,char* nombre);
+void employee_setName(Employee* employee,char* name);
+char* employee_getName(Employee* employee);
 
-int employee_setHorasTrabajadas(Employee* employee,int horasTrabajadas);
-int employee_getHorasTrabajadas(Employee* employee,int* horasTrabajadas);
+int employee_setManHours(Employee* employee,int manHours);
+int employee_getManHours(Employee *employee);
 
-int employee_setSueldo(Employee* employee,int sueldo);
-int employee_getSueldo(Employee* employee,int* sueldo);
+int employee_setSalary(Employee* employee,int salary);
+int employee_getSalary(Employee* employee);
 
 void employee_print(Employee* employee);
 

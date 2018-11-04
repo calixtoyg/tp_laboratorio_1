@@ -39,7 +39,7 @@ int test_addNode(LinkedList* this, int nodeIndex,void* pElement);
 int ll_add(LinkedList* this, void* pElement);
 void* ll_get(LinkedList* this, int index);
 int ll_set(LinkedList* this, int index,void* pElement);
-int ll_remove(LinkedList* this,int index);
+void* ll_remove(LinkedList* this,int index);
 int ll_clear(LinkedList* this);
 int ll_deleteLinkedList(LinkedList* this);
 int ll_indexOf(LinkedList* this, void* pElement);

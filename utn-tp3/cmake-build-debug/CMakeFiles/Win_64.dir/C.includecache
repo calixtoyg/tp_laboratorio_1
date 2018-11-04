@@ -6,17 +6,17 @@
 
 #IncludeRegexTransform: 
 
-C:/Users/yasir/Desktop/Win_64/Employee.h
-
-C:/Users/yasir/Desktop/Win_64/LinkedList.c
+C:/Users/yasir/Desktop/Proyectos UTN/tp_laboratorio_1/utn-tp3/Employee.c
+Employee.h
+C:/Users/yasir/Desktop/Proyectos UTN/tp_laboratorio_1/utn-tp3/Employee.h
 stdio.h
 -
 stdlib.h
 -
-LinkedList.h
-C:/Users/yasir/Desktop/Win_64/LinkedList.h
-Employee.h
-C:/Users/yasir/Desktop/Win_64/Employee.h
+string.h
+-
+ctype.h
+-
 
-C:/Users/yasir/Desktop/Win_64/LinkedList.h
+C:/Users/yasir/Desktop/Proyectos UTN/tp_laboratorio_1/utn-tp3/Employee.h
 

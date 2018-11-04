@@ -4,11 +4,11 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_C
-  "C:/Users/yasir/Desktop/Win_64/Controller.c" "C:/Users/yasir/Desktop/Win_64/cmake-build-debug/CMakeFiles/Win_64.dir/Controller.c.obj"
-  "C:/Users/yasir/Desktop/Win_64/Employee.c" "C:/Users/yasir/Desktop/Win_64/cmake-build-debug/CMakeFiles/Win_64.dir/Employee.c.obj"
-  "C:/Users/yasir/Desktop/Win_64/LinkedList.c" "C:/Users/yasir/Desktop/Win_64/cmake-build-debug/CMakeFiles/Win_64.dir/LinkedList.c.obj"
-  "C:/Users/yasir/Desktop/Win_64/main.c" "C:/Users/yasir/Desktop/Win_64/cmake-build-debug/CMakeFiles/Win_64.dir/main.c.obj"
-  "C:/Users/yasir/Desktop/Win_64/parser.c" "C:/Users/yasir/Desktop/Win_64/cmake-build-debug/CMakeFiles/Win_64.dir/parser.c.obj"
+  "C:/Users/yasir/Desktop/Proyectos UTN/tp_laboratorio_1/utn-tp3/Controller.c" "C:/Users/yasir/Desktop/Proyectos UTN/tp_laboratorio_1/utn-tp3/cmake-build-debug/CMakeFiles/Win_64.dir/Controller.c.obj"
+  "C:/Users/yasir/Desktop/Proyectos UTN/tp_laboratorio_1/utn-tp3/Employee.c" "C:/Users/yasir/Desktop/Proyectos UTN/tp_laboratorio_1/utn-tp3/cmake-build-debug/CMakeFiles/Win_64.dir/Employee.c.obj"
+  "C:/Users/yasir/Desktop/Proyectos UTN/tp_laboratorio_1/utn-tp3/LinkedList.c" "C:/Users/yasir/Desktop/Proyectos UTN/tp_laboratorio_1/utn-tp3/cmake-build-debug/CMakeFiles/Win_64.dir/LinkedList.c.obj"
+  "C:/Users/yasir/Desktop/Proyectos UTN/tp_laboratorio_1/utn-tp3/main.c" "C:/Users/yasir/Desktop/Proyectos UTN/tp_laboratorio_1/utn-tp3/cmake-build-debug/CMakeFiles/Win_64.dir/main.c.obj"
+  "C:/Users/yasir/Desktop/Proyectos UTN/tp_laboratorio_1/utn-tp3/parser.c" "C:/Users/yasir/Desktop/Proyectos UTN/tp_laboratorio_1/utn-tp3/cmake-build-debug/CMakeFiles/Win_64.dir/parser.c.obj"
   )
 set(CMAKE_C_COMPILER_ID "GNU")
 

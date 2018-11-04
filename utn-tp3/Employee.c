@@ -53,9 +53,6 @@ static void initialize(Employee *this, int id, char *name, int salary, int manHo
 //    return i;
 //}
 
-
-static void toUpper(char *name);
-
 /** \brief  Reseva espacio en meomoria para una nueva Personaa y la inicializa
 *
 * \param int id Age de la Personaa
@@ -79,21 +76,12 @@ Employee *employee_newWithData(int id, char *name, int salary, int manHours) {
  */
 static void initialize(Employee *this, int id, char *name, int salary, int manHours) {
 
-    toUpper(name);
     this->id = id;
     strcpy(this->name, name);
     this->salary = salary;
     this->manHours = manHours;
 }
 
-static void toUpper(char *name) {
-    int i;
-    for (i = 0; name[i] != '\0' ; ++i) {
-        name[i] = toupper(name[i]);
-
-    }
-
-}
 
 /** \brief  Setea la age de una Personaa recibida como parametro
  * \param Persona* this Puntero a la Personaa

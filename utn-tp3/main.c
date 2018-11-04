@@ -22,18 +22,23 @@
 int main() {
     int option = 0;
     LinkedList *arrayListEmployee = ll_newLinkedList();
-    arrayListEmployee->pFirstNode = malloc(sizeof(Node));
-    arrayListEmployee->pFirstNode->data = employee_newWithData(1, "Carlos", 10000, 4);
-    arrayListEmployee->pFirstNode->pNextNode = NULL;
-    arrayListEmployee->pFirstNode->pNextNode = malloc(sizeof(Node));
-    arrayListEmployee->pFirstNode->pNextNode->data = employee_newWithData(2, "Pedro", 10000, 4);
-    arrayListEmployee->pFirstNode->pNextNode->pNextNode = NULL;
-    ll_push(arrayListEmployee, employee_newWithData(3, "Pijazo", 10000, 4));
-    Employee* data = ll_get(arrayListEmployee,1);
+    ll_push(arrayListEmployee, employee_newWithData(5, "Alfredo", 10000, 4));
+    ll_push(arrayListEmployee, employee_newWithData(4, "Juan", 10000, 4));
+    ll_push(arrayListEmployee, employee_newWithData(3, "Pablo", 10000, 4));
+    ll_push(arrayListEmployee, employee_newWithData(2, "Carlos", 10000, 4));
+    ll_push(arrayListEmployee, employee_newWithData(1, "Capitan", 10000, 4));
+//    Employee* data = ll_remove(arrayListEmployee,1);
     ll_print(arrayListEmployee);
-    printf("    %s    \n\n\n",employee_getName(data));
+//    printf("    %s    \n\n\n",employee_getName(data));
     printf("    %d    \n\n\n",ll_indexOf(arrayListEmployee, employee_newWithData(2, "pEdRo", 10000, 4)));
+    ll_add(arrayListEmployee,5, employee_newWithData(3, "NUEVA DATA", 10000, 2));
+    ll_add(arrayListEmployee,6, employee_newWithData(6, "NUEVA DATA", 10000, 2));
+    ll_add(arrayListEmployee,7, employee_newWithData(6, "NUEVA DATA", 10000, 2));
+    ll_set(arrayListEmployee,7,employee_newWithData(99, "NUEVA DATA PEGADA", 10000, 2));
     ll_print(arrayListEmployee);
+
+    printf("EL TAMAÑO : %d",ll_len(arrayListEmployee));
+
 
 
 

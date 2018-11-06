@@ -127,9 +127,11 @@ int employee_getManHours(Employee *this) {
     return this->manHours;
 }
 
-void person_setManHours(Employee *this, int manHours) {
+int employee_setManHours(Employee *this, int manHours) {
     if (manHours > 0)
         this->manHours = manHours;
+    else
+        return -1;
 }
 
 
@@ -138,7 +140,7 @@ void person_setManHours(Employee *this, int manHours) {
  * \return void
  *
  */
-void person_free(Employee *this) {
+void employee_free(Employee *this) {
     // Do any other freeing required here.
     free(this);
 }
@@ -150,6 +152,14 @@ void employee_print(Employee* employee){
     printf("Horas Trabajadas : %d\n", employee->manHours);
     printf("ID      : %d\n", employee->id);
     printf("-----------------------------------------------------\n");
+}
+
+
+int employee_equals(void *pElement, Node *currentNode) {
+    return !strcmp(strupr(employee_getName(currentNode->data)), strupr(employee_getName(pElement)))
+           && employee_getId(currentNode->data) == employee_getId(pElement)
+           && employee_getManHours(currentNode->data) == employee_getManHours(pElement)
+           && employee_getSalary(currentNode->data) == employee_getSalary(pElement);
 }
 
 

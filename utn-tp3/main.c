@@ -32,9 +32,8 @@ int main() {
 //    printf("    %s    \n\n\n",employee_getName(data));
     printf("    %d    \n\n\n",ll_indexOf(arrayListEmployee, employee_newWithData(2, "pEdRo", 10000, 4)));
     ll_add(arrayListEmployee,5, employee_newWithData(3, "NUEVA DATA", 10000, 2));
-    ll_add(arrayListEmployee,6, employee_newWithData(6, "NUEVA DATA", 10000, 2));
-    ll_add(arrayListEmployee,7, employee_newWithData(6, "NUEVA DATA", 10000, 2));
-    ll_set(arrayListEmployee,7,employee_newWithData(99, "NUEVA DATA PEGADA", 10000, 2));
+    ll_append(arrayListEmployee,employee_newWithData(45,"TESTING APPEND",10000,2));
+    ll_add(arrayListEmployee,8, employee_newWithData(6, "NUEVA DATA", 10000, 2));
     ll_print(arrayListEmployee);
 
     printf("EL TAMAÑO : %d",ll_len(arrayListEmployee));

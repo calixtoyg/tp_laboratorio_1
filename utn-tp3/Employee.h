@@ -1,5 +1,8 @@
 #ifndef employee_H_INCLUDED
 #define employee_H_INCLUDED
+
+#include "LinkedList.h"
+
 typedef struct
 {
     int id;
@@ -25,5 +28,6 @@ int employee_setSalary(Employee* employee,int salary);
 int employee_getSalary(Employee* employee);
 
 void employee_print(Employee* employee);
+int employee_equals(void *pElement, Node *currentNode);
 
 #endif // employee_H_INCLUDED

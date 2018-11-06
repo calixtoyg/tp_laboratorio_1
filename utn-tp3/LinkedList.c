@@ -8,17 +8,9 @@
 #include "LinkedList.h"
 #include "Employee.h"
 
-int employee_equals(void *pElement, Node *currentNode);
 
-Node *_ll_createNode(Node *next, void *pElement);
+static Node *_ll_createNode(Node *next, void *pElement);
 
-/**
- * Checks if the menu was valid
- * @param menu int menu number
- * @param min int minimum number included
- * @param max int maximum number included
- * @return int returns 1 if the menu is valid 0 otherwise
- */
 int isValidMenu(int menu, int min, int max) {
     if (menu >= min && menu <= max) {
         return 1;
@@ -26,20 +18,27 @@ int isValidMenu(int menu, int min, int max) {
         return 0;
 }
 
-void ll_print(LinkedList *list) {
+int ll_print(LinkedList *list) {
+    if (ll_isEmpty(list)) {
+        return -1;
+    }
     Node *temporary = list->pFirstNode;
     while (temporary != NULL) {
         employee_print(temporary->data);
         temporary = temporary->pNextNode;
     }
+    return 0;
 
 }
 
 int ll_push(LinkedList *this, void *pElement) {
+    if (ll_isEmpty(this)) {
+        return -1;
+    }
     Node *newNode;
     newNode = malloc(sizeof(Node));
     if (newNode == NULL) {
-        return NULL;
+        return -1;
     }
     newNode->data = pElement;
     newNode->pNextNode = this->pFirstNode;
@@ -50,11 +49,11 @@ int ll_push(LinkedList *this, void *pElement) {
 }
 
 void *ll_pop(LinkedList *this) {
+    if (ll_isEmpty(this)) {
+        return (void *) -1;
+    }
     void *returnData = NULL;
     Node *nextNode = NULL;
-    if (this->pFirstNode == NULL) {
-        return returnData;
-    }
     nextNode = this->pFirstNode->pNextNode;
     returnData = this->pFirstNode->pNextNode->data;
     free(this->pFirstNode);
@@ -64,8 +63,11 @@ void *ll_pop(LinkedList *this) {
 }
 
 int ll_add(LinkedList *this, int index, void *pElement) {
-    int i = 0;
+    if (ll_isEmpty(this)) {
+        return -1;
+    }
     Node *currentNode = this->pFirstNode;
+    int i = 0;
     if (index == 0) {
         return ll_push(this, pElement);
     }
@@ -87,7 +89,7 @@ int ll_add(LinkedList *this, int index, void *pElement) {
 LinkedList *ll_newLinkedList(void) {
     LinkedList *linkedList = malloc(sizeof(LinkedList));
     if (linkedList == NULL) {
-        return linkedList;
+        return NULL;
     }
     linkedList->pFirstNode = NULL;
     linkedList->size = 0;
@@ -95,6 +97,9 @@ LinkedList *ll_newLinkedList(void) {
 }
 
 void *ll_get(LinkedList *this, int index) {
+    if (ll_isEmpty(this)) {
+        return (void *) -1;
+    }
     void *returnData = NULL;
     int i = 0;
     Node *currentNode = this->pFirstNode;
@@ -114,9 +119,34 @@ void *ll_get(LinkedList *this, int index) {
 
 }
 
-int ll_indexOf(LinkedList *this, void *pElement) {
-    int index;
+Node *ll_getNode(LinkedList *this, int nodeIndex) {
+    if (ll_isEmpty(this)) {
+        return (Node *) -1;
+    }
+    void *returnData = NULL;
+    int i = 0;
     Node *currentNode = this->pFirstNode;
+    Node *temporaryNode = NULL;
+    if (nodeIndex == 0) {
+        return ll_pop(this);
+    }
+    for (i = 0; i < nodeIndex - 1; i++) {
+        if (currentNode->pNextNode == NULL) {
+            printf("Index out of bound.\n");
+            return (void *) -1;
+        }
+        currentNode = currentNode->pNextNode;
+    }
+    return currentNode->pNextNode;
+
+}
+
+int ll_indexOf(LinkedList *this, void *pElement) {
+    if (ll_isEmpty(this)) {
+        return -1;
+    }
+    Node *currentNode = this->pFirstNode;
+    int index;
     for (index = 0; currentNode != NULL; ++index) {
         if (employee_equals(pElement, currentNode)) {
             return index;
@@ -125,21 +155,18 @@ int ll_indexOf(LinkedList *this, void *pElement) {
         currentNode = currentNode->pNextNode;
 
     }
+    printf("There is no element.\n");
     return -1;
 
 }
 
-int employee_equals(void *pElement, Node *currentNode) {
-    return !strcmp(strupr(employee_getName(currentNode->data)), strupr(employee_getName(pElement)))
-           && employee_getId(currentNode->data) == employee_getId(pElement)
-           && employee_getManHours(currentNode->data) == employee_getManHours(pElement)
-           && employee_getSalary(currentNode->data) == employee_getSalary(pElement);
-}
-
 void *ll_remove(LinkedList *this, int index) {
+    if (ll_isEmpty(this)) {
+        return (void *) -1;
+    }
+    Node *currentNode = this->pFirstNode;
     void *returnData = NULL;
     int i = 0;
-    Node *currentNode = this->pFirstNode;
     Node *temporaryNode = NULL;
     if (index == 0) {
         return ll_pop(this);
@@ -158,9 +185,14 @@ void *ll_remove(LinkedList *this, int index) {
     this->size -= 1;
     return returnData;
 }
-
+/**
+ * Returns length of the LinkedList
+ * If LinkedList is empty returns -1 else length(size) of list
+ * @param this LinkedList
+ * @return size size of LinkedList
+ */
 int ll_len(LinkedList *this) {
-    if (this == NULL) {
+    if (ll_isEmpty(this)) {
         printf("Lista vacia");
         return -1;
     } else
@@ -193,18 +225,28 @@ int ll_set(LinkedList *this, int index, void *pElement) {
 }
 
 int ll_isEmpty(LinkedList *this) {
-    if (this->pFirstNode == NULL) {
+    if (this == NULL) {
         printf("List is empty.");
         return 1;
     } else
         return 0;
 }
 
+//TODO
+/**
+ *
+ * @param this
+ * @return
+ */
 int ll_deleteLinkedList(LinkedList *this) {
+    if (ll_isEmpty(this)) {
+        return -1;
+    }
     Node *currentNode = this->pFirstNode;
+
     Node *temporaryNode;
     int i;
-    if (ll_isEmpty(this->pFirstNode)) {
+    if (ll_isEmpty(this)) {
         return -1;
     }
     for (i = 0; currentNode != NULL; i++) {
@@ -216,7 +258,7 @@ int ll_deleteLinkedList(LinkedList *this) {
     return 0;
 }
 
-int ll_contains(LinkedList* this, void* pElement){
+int ll_contains(LinkedList *this, void *pElement) {
     int index;
     Node *currentNode = this->pFirstNode;
     for (index = 0; currentNode != NULL; ++index) {
@@ -231,10 +273,28 @@ int ll_contains(LinkedList* this, void* pElement){
 
 }
 
-Node *_ll_createNode(Node *next, void *pElement) {
+int ll_append(LinkedList *list, void *pElement) {
+    if (ll_isEmpty(list)) {
+        return -1;
+    }
+    int i = 0;
+    Node *currentNode = list->pFirstNode;
+    Node *temporaryNode = malloc(sizeof(Node));
+    for (i = 0; currentNode->pNextNode != NULL; i++) {
+        currentNode = currentNode->pNextNode;
+    }
+    currentNode->pNextNode = temporaryNode;
+    temporaryNode->data = pElement;
+    temporaryNode->pNextNode = NULL;
+    list->size++;
+}
+
+static Node *_ll_createNode(Node *next, void *pElement) {
     Node *newNode = malloc(sizeof(Node));
-    if (newNode == NULL)
+    if (newNode == NULL) {
         printf("ERROR creating node. \n");
+        return (Node *) -1;
+    }
     newNode->data = pElement;
     newNode->pNextNode = next;
 }

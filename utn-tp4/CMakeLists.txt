@@ -1,11 +1,11 @@
 cmake_minimum_required(VERSION 3.12)
-project(utn_tp3)
+project(Win_64)
 
 set(CMAKE_CXX_STANDARD 14)
 
 include_directories(.)
 
-add_executable(utn_tp3
+add_executable(Win_64
         Controller.c
         Controller.h
         data.csv
@@ -13,9 +13,6 @@ add_executable(utn_tp3
         Employee.h
         LinkedList.a
         LinkedList.h
-        functionsForProjects.c
-        functionsForProjects.h
         main.c
         parser.c
-        parser.h)
-target_link_libraries(utn_tp3 ${CMAKE_SOURCE_DIR}/LinkedList.a)
+        parser.h LinkedList.c)

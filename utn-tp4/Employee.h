@@ -13,7 +13,6 @@ typedef struct
 
 Employee* employee_new();
 Employee *employee_newWithData(int id, char *name, int salary, int manHours);
-
 void employee_delete();
 
 int employee_setId(Employee* employee,int id);

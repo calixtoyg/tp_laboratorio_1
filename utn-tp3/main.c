@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <io.h>
 #include "LinkedList.h"
 #include "Controller.h"
 #include "Employee.h"
@@ -20,54 +21,50 @@
 
 
 int main() {
-    int option = 0;
-    LinkedList *arrayListEmployee = ll_newLinkedList();
-    ll_push(arrayListEmployee, employee_newWithData(5, "Alfredo", 10000, 4));
-    ll_push(arrayListEmployee, employee_newWithData(4, "Juan", 10000, 4));
-    ll_push(arrayListEmployee, employee_newWithData(3, "Pablo", 10000, 4));
-    ll_push(arrayListEmployee, employee_newWithData(2, "Carlos", 10000, 4));
-    ll_push(arrayListEmployee, employee_newWithData(1, "Capitan", 10000, 4));
-//    Employee* data = ll_remove(arrayListEmployee,1);
-    ll_print(arrayListEmployee);
-//    printf("    %s    \n\n\n",employee_getName(data));
-    printf("    %d    \n\n\n",ll_indexOf(arrayListEmployee, employee_newWithData(2, "pEdRo", 10000, 4)));
-    ll_add(arrayListEmployee,5, employee_newWithData(3, "NUEVA DATA", 10000, 2));
-    ll_append(arrayListEmployee,employee_newWithData(45,"TESTING APPEND",10000,2));
-    ll_add(arrayListEmployee,8, employee_newWithData(6, "NUEVA DATA", 10000, 2));
-    ll_print(arrayListEmployee);
-
-    printf("EL TAMAÑO : %d",ll_len(arrayListEmployee));
-
-
-
-
-
-
-//    do{
-//        printf("------------------------ MENU JUEGOS ----------------------\n");
-//        printf("| 1 - ALTA                                                 |\n");
-//        printf("|                                                          |\n");
-//        printf("| 2 - MODIFICAR                                            |\n");
-//        printf("|                                                          |\n");
-//        printf("| 3 - BAJA                                                 |\n");
-//        printf("|                                                          |\n");
-//        printf("| 4 - LISTA                                                |\n");
-//        printf("|                                                          |\n");
-//        printf("| 5 - RETORNAR A MENU PRINCIPAL                            |\n");
-//        printf("------------------------------------------------------------\n");
-//        fflush(stdin);
-//        scanf("%d", &employeeMenu);
-//        if (!isValidMenu(employeeMenu, 1, 5))
-//        {
-//            printf("El numero ingresado no es valido.\n");
-//            menuJuegos = 0;
-//        }
-//        switch(option)
-//        {
-//            case 1:
-////                controller_loadFromText("data.csv",listaEmpleados);
-//                break;
-//        }
-//    }while(option != 10);
+    char buf[1024]; // hack, but fine for this
+    printf("%s\n", getcwd(buf, 1024));
+    int option = 0, num = 24;
+    FILE *pFile;
+    LinkedList *listaEmpleados = ll_newLinkedList();
+    do {
+        scanf("%d", &option);
+        switch (option) {
+            case 1:
+                controller_loadFromText("data.csv", listaEmpleados);
+                break;
+            case 2:
+                controller_loadFromBinary("data-binary", listaEmpleados);
+                break;
+            case 3:
+                controller_addEmployee(listaEmpleados);
+                break;
+            case 4:
+                controller_editEmployee(listaEmpleados);
+                break;
+            case 5:
+                controller_removeEmployee(listaEmpleados);
+                break;
+            case 6:
+                do {
+                    employee_print(ll_get(listaEmpleados, num));
+                    num--;
+                } while (num >= 0);
+                break;
+            case 25:
+                pFile = fopen("data.csv", "a");
+                fprintf(pFile, "%s,%s,%s,%s\n", "funciona esto?", "creo", "que", "si");
+                fclose(pFile);
+                break;
+            case 7:
+                controller_loadFromBinary("data-binary", listaEmpleados);
+                break;
+            case 8:
+                controller_saveAsText("path",listaEmpleados);
+                break;
+            case 9:
+                controller_saveAsBinary("path",listaEmpleados);
+                break;
+        }
+    } while (option != 10);
     return 0;
 }

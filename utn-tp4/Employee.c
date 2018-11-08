@@ -40,7 +40,7 @@ static void initialize(Employee *this, int id, char *name, int salary, int manHo
 //
 //            i++;
 //            if (i >= size) {
-//                // incrementamos el tamaño del array
+//                // incrementamos el tamaÃ±o del array
 //                size += 10;
 //                arrayPersonas = realloc(arrayPersonas, sizeof(Employee *) * size);
 //            }
@@ -154,22 +154,12 @@ void employee_print(Employee* employee){
     printf("-----------------------------------------------------\n");
 }
 
-Employee* employee_new(){
-    Employee *employee = malloc(sizeof(Employee));
-    if (employee == NULL){
-        return -1;
-    }else
-        return employee;
-}
 
-/*int employee_equals(void *pElement, Node *currentNode) {
+int employee_equals(void *pElement, Node *currentNode) {
     return !strcmp(strupr(employee_getName(currentNode->data)), strupr(employee_getName(pElement)))
            && employee_getId(currentNode->data) == employee_getId(pElement)
            && employee_getManHours(currentNode->data) == employee_getManHours(pElement)
            && employee_getSalary(currentNode->data) == employee_getSalary(pElement);
-}*/
-
-
-
+}
 
 

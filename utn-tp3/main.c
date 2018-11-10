@@ -73,6 +73,8 @@ int main() {
                 break;
             case 7:
                 //En la catedra no nos enseñaron a usar una funcion con este parametro : int (*pFunc)(void* ,void*)
+                //anticipo esta funcion no funciona, rompe el programa por eso la voy a dejar comentada
+
 //                controller_sortEmployee(listaEmpleados);
                 break;
             case 8:

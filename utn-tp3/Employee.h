@@ -31,6 +31,6 @@ int employee_getSalary(Employee* employee);
 void employee_print(Employee* employee);
 int employee_equals(void *pElement, Node *currentNode);
 
-int employee_sort(void* pEmployee1,void* pEmployee2);
+void* employee_sort(void* pEmployee1,void* pEmployee2);
 
 #endif // employee_H_INCLUDED

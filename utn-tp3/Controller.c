@@ -145,7 +145,9 @@ int controller_ListEmployee(LinkedList *pArrayListEmployee) {
  *
  */
 int controller_sortEmployee(LinkedList *pArrayListEmployee) {
-    ll_sorting(pArrayListEmployee,1);
+    Employee *employee1 = ll_get(pArrayListEmployee,0);
+    Employee *employee2 = ll_get(pArrayListEmployee,2);
+    ll_sort(pArrayListEmployee,employee_sort(employee1,employee2),1);
 //    ll_sorting(pArrayListEmployee,1);
     return 1;
 }

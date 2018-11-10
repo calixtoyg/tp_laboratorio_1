@@ -163,15 +163,15 @@ Employee *employee_new() {
         return employee;
 }
 
-int employee_sort(void *pEmployee1, void *pEmployee2) {
+void* employee_sort(void *pEmployee1, void *pEmployee2) {
 
     Employee *employee1 = pEmployee1;
     Employee *employee2 = pEmployee2;
 
-    if (strcmp(employee1->name, employee2->name))
-        return 1;
+    if (strcmp(employee1->name, employee2->name) > 0)
+        return employee1;
     else
-        return 0;
+        return employee2;
 
 
 }

@@ -36,7 +36,7 @@ int controller_loadFromText(char *path, LinkedList *pArrayListEmployee) {
 int controller_loadFromBinary(char *path, LinkedList *pArrayListEmployee) {
     FILE *pFile = fopen(path, "rb");
     if (pFile == NULL) {
-        printf("El archivo no se puede abrir o esta vacio.\n");
+        perror("fopen");
         return -1;
     }
     parser_EmployeeFromBinary(pFile, pArrayListEmployee);

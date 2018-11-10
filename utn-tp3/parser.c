@@ -85,8 +85,6 @@ int parser_EmployeeFromBinary(FILE *pFile, LinkedList *pArrayListEmployee) {
         Employee *employee = employee_new();
         if(fread(employee, sizeof(Employee), 1, pFile) == 1){
             ll_add(pArrayListEmployee, employee);
-            printf("%d %s %d %d\n", employee_getId(employee), employee_getName(employee), employee_getSalary(employee),
-               employee_getManHours(employee));
         }
     } while (!feof(pFile));
     return 1;

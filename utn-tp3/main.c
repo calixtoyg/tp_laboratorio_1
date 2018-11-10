@@ -23,7 +23,6 @@
 
 
 int main() {
-    int sarasa = 69;
     char pathToReadBinary[1024] = "\0";
     char pathToReadText[1024] = "\0";
     char pathForText[1024] = "\0";
@@ -51,15 +50,11 @@ int main() {
         }
         switch (option) {
             case 1:
-                if (ll_isEmpty(listaEmpleados) || listaEmpleados == NULL)
-                    listaEmpleados = ll_newLinkedList();
                 getString(pathToReadText, "Ingrese el path donde se encuentra el CSV.\n");
                 if (pathToReadText != "\0")
                     controller_loadFromText(pathToReadText, listaEmpleados);
                 break;
             case 2:
-                if (ll_isEmpty(listaEmpleados) || listaEmpleados == NULL)
-                    listaEmpleados = ll_newLinkedList();
                 getString(pathToReadBinary, "Ingrese el path donde se encuentra el archivo binario.\n");
                 if (pathToReadBinary != "\0")
                     controller_loadFromBinary(pathToReadBinary, listaEmpleados);
@@ -68,7 +63,6 @@ int main() {
                 controller_addEmployee(listaEmpleados);
                 break;
             case 4:
-
                 controller_editEmployee(listaEmpleados);
                 break;
             case 5:
@@ -78,21 +72,22 @@ int main() {
                 controller_ListEmployee(listaEmpleados);
                 break;
             case 7:
-
+                //En la catedra no nos enseñaron a usar una funcion con este parametro : int (*pFunc)(void* ,void*)
+//                controller_sortEmployee(listaEmpleados);
                 break;
             case 8:
                 getString(pathForText, "Ingrese el path donde guardar el archivo de texto.\n");
-                if (pathForText != "\0"){
+                if (pathForText != "\0") {
                     printf("Desea borrar la lista despues de guardar?(Y/N)\n");
                     scanf("%c", &borrarLista);
                     converYesOrNoToInteger(&borrarLista);
 
-                    if (isValidMenu(borrarLista,0,1)){
-                        if (borrarLista == 1){
-                            controller_saveAsText(pathForBinary, listaEmpleados);
-                            //TODO this function is not deleting as it should.
+                    if (isValidMenu(borrarLista, 0, 1)) {
+                        if (borrarLista == 1) {
+                            controller_saveAsText(pathForText, listaEmpleados);
                             ll_deleteLinkedList(listaEmpleados);
-                        }else
+                            listaEmpleados = ll_newLinkedList();
+                        } else
                             controller_saveAsText(pathForBinary, listaEmpleados);
 
                     }
@@ -100,17 +95,18 @@ int main() {
                 break;
             case 9:
                 getString(pathForBinary, "Ingrese el path donde guardar el archivo binario.\n");
-                if (pathForBinary != "\0"){
+                if (pathForBinary != "\0") {
 
                     printf("Desea borrar la lista despues de guardar?(Y/N)\n");
                     scanf("%c", &borrarLista);
                     converYesOrNoToInteger(&borrarLista);
 
-                    if (isValidMenu(borrarLista,0,1)){
-                        if (borrarLista == 1){
+                    if (isValidMenu(borrarLista, 0, 1)) {
+                        if (borrarLista == 1) {
                             controller_saveAsBinary(pathForBinary, listaEmpleados);
                             ll_deleteLinkedList(listaEmpleados);
-                        }else
+                            listaEmpleados = ll_newLinkedList();
+                        } else
                             controller_saveAsBinary(pathForBinary, listaEmpleados);
 
                     }

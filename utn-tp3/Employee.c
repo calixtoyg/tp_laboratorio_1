@@ -40,7 +40,7 @@ static void initialize(Employee *this, int id, char *name, int salary, int manHo
 //
 //            i++;
 //            if (i >= size) {
-//                // incrementamos el tamaño del array
+//                // incrementamos el tamaï¿½o del array
 //                size += 10;
 //                arrayPersonas = realloc(arrayPersonas, sizeof(Employee *) * size);
 //            }
@@ -123,6 +123,7 @@ int employee_setSalary(Employee *this, int salary) {
     else
         return -1;
 }
+
 int employee_getManHours(Employee *this) {
     return this->manHours;
 }
@@ -145,7 +146,7 @@ void employee_free(Employee *this) {
     free(this);
 }
 
-void employee_print(Employee* employee){
+void employee_print(Employee *employee) {
     printf("-----------------------------------------------------\n");
     printf("Nombre  : %s\n", employee->name);
     printf("Salario : %d\n", employee->salary);
@@ -154,14 +155,26 @@ void employee_print(Employee* employee){
     printf("-----------------------------------------------------\n");
 }
 
-Employee* employee_new(){
+Employee *employee_new() {
     Employee *employee = malloc(sizeof(Employee));
-    if (employee == NULL){
+    if (employee == NULL) {
         return -1;
-    }else
+    } else
         return employee;
 }
 
+int employee_sort(void *pEmployee1, void *pEmployee2) {
+
+    Employee *employee1 = pEmployee1;
+    Employee *employee2 = pEmployee2;
+
+    if (strcmp(employee1->name, employee2->name))
+        return 1;
+    else
+        return 0;
+
+
+}
 /*int employee_equals(void *pElement, Node *currentNode) {
     return !strcmp(strupr(employee_getName(currentNode->data)), strupr(employee_getName(pElement)))
            && employee_getId(currentNode->data) == employee_getId(pElement)

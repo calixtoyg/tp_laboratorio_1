@@ -146,6 +146,8 @@ void getString(char input[], char msg[]) {
     printf("%s", msg);
     fgets(input, 200, stdin);
     input[strcspn(input, "\n")] = 0;
+    if(isspace(input[strlen(input)-1]))
+        input[strlen(input)-1]='\0';
 }
 
 /**
@@ -472,6 +474,12 @@ int modifyEmployee(eEmployee *employee, int len, int id, char name[], char lastN
     return -1;
 }
 
+/**
+ * Converts a 1 or 0 to Y or N respectively.
+ * if it fails returns -1;
+ * @param c Pointer to c
+ * @return int
+ */
 int converYesOrNoToInteger(char *c){
     if(*c == 'Y' || *c == 'y' || *c == 'N' || *c == 'n'){
         if (*c == 'Y' || *c == 'y' )

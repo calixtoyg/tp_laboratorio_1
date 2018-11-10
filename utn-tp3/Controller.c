@@ -17,7 +17,7 @@ int controller_loadFromText(char *path, LinkedList *pArrayListEmployee) {
     FILE *pFile;
     pFile = fopen(path, "r");
     if (pFile == NULL) {
-        printf("El archivo no se puede abrir o esta vacio.\n");
+        perror("fopen");
         return -1;
     }
     parser_EmployeeFromText(pFile, pArrayListEmployee);
@@ -60,7 +60,7 @@ int controller_addEmployee(LinkedList *pArrayListEmployee) {
 
     getStringLettersOnly(nombre, "Ingrese el nombre: \n", 50, 3);
     getEntero(&salary, "Ingrese el salario: \n", "El numbero es invalido.\n", 0, 410065408, 3);
-    getEntero(&manHours, "Ingrese la cantidad de horas que trabaja: \n", "El numbero es invalido.\n", 0, 24, 3);
+    getEntero(&manHours, "Ingrese la cantidad de horas que trabaja: \n", "El numbero es invalido.\n", 0, 745, 3);
     Employee *employee = employee_newWithData(pArrayListEmployee->size + 1, nombre, salary, manHours);
     ll_add(pArrayListEmployee, employee);
     return 1;
@@ -92,7 +92,7 @@ int controller_editEmployee(LinkedList *pArrayListEmployee) {
     }
     getStringLettersOnly(nombre, "Ingrese el nombre: \n", 50, 3);
     getEntero(&salary, "Ingrese el salario: \n", "El numero es invalido.\n", 0, 410065408, 3);
-    getEntero(&manHours, "Ingrese la cantidad de horas que trabaja: \n", "El numbero es invalido.\n", 0, 24, 3);
+    getEntero(&manHours, "Ingrese la cantidad de horas que trabaja: \n", "El numbero es invalido.\n", 0, 745, 3);
     Employee *employee = employee_newWithData(id, nombre, salary, manHours);
     printf("Employee editado con exito.\n");
     ll_set(pArrayListEmployee, id - 1, employee);
@@ -145,7 +145,8 @@ int controller_ListEmployee(LinkedList *pArrayListEmployee) {
  *
  */
 int controller_sortEmployee(LinkedList *pArrayListEmployee) {
-//    ll_sort(pArrayListEmployee,)
+    ll_sorting(pArrayListEmployee,1);
+//    ll_sorting(pArrayListEmployee,1);
     return 1;
 }
 
@@ -164,16 +165,21 @@ int controller_saveAsText(char *path, LinkedList *pArrayListEmployee) {
     listCloned = ll_clone(pArrayListEmployee);
     pFile = fopen(path, "w+");
     if (pFile == NULL) {
+        perror("fopen");
         return -1;
     }
+
     if (ll_isEmpty(pArrayListEmployee)) {
         fclose(pFile);
         return -1;
     }
     do {
-
         employee = ll_get(listCloned, i);
-        fwrite(employee, sizeof(Employee), 1, pFile);
+        if (employee != NULL) {
+            fprintf(pFile, "%d,%s,%d,%d\n", employee_getId(employee), employee_getName(employee),
+                    employee_getManHours(employee), employee_getSalary(employee));
+
+        }
         removeSuccesful = ll_remove(listCloned, 0);
     } while (removeSuccesful != -1);
     fclose(pFile);
@@ -195,6 +201,7 @@ int controller_saveAsBinary(char *path, LinkedList *pArrayListEmployee) {
     listCloned = ll_clone(pArrayListEmployee);
     pFile = fopen(path, "wb+");
     if (pFile == NULL) {
+        perror("fopen");
         return -1;
     }
     if (ll_isEmpty(pArrayListEmployee)) {

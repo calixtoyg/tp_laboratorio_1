@@ -128,10 +128,8 @@ int getFloat(float *pFloat, char msg[], char msgError[], float min, float max, i
  */
 int isLetter(char c[]) {
     int i = 0;
-    if (c[0] == ' ' || c[0] == '\r')
-        return 0;
     while (c[i] != '\0') {
-        if (!(c[i] >= 'a' && c[i] <= 'z' || c[i] >= 'A' && c[i] <= 'Z') && c[i] != ' ')
+        if (isdigit(c[i]))
             return 0;
         i++;
     }
@@ -252,6 +250,7 @@ int findEmployeeById(eEmployee employee[], int len, int id) {
     printf("No hay empleados con el ID:%d en el array.\n", id);
     return -1;
 }
+
 /**
  * Checks if the menu was valid
  * @param menu int menu number
@@ -369,6 +368,7 @@ void sortBySectorLastNameAndName(eEmployee *employee, int len, int order) {
 
 
 }
+
 /**
  * Removes employee by id ask for char input Y or y for deletion otherwise operation is cancelled
  * @param employee *eEmployee pointer to array of structs of type eEmployee
@@ -403,6 +403,7 @@ int removeEmployee(eEmployee *employee, int len, int id) {
     }
 
 }
+
 /**
  * Gets average salaries of employees
  * @param employee *eEmployee pointer to array of structs of type eEmployee
@@ -419,6 +420,7 @@ int getAverageSalaries(eEmployee *employee, int len) {
     }
     return averageSalaries / rangeOfNotEmptyEmployees;
 }
+
 /**
  * Gets the employees that are above average salary
  * @param employee *eEmployee pointer to array of structs of type eEmployee
@@ -438,6 +440,7 @@ int employeesAboveAverage(eEmployee *employee, int len) {
 
 
 }
+
 /**
  * Modifies employee selected by the id
  * @param employee *eEmployee pointer to array of structs of type eEmployee
@@ -466,6 +469,7 @@ int modifyEmployee(eEmployee *employee, int len, int id, char name[], char lastN
     printf("Operacion cancelada, no se pudo modificar al empleado.\n");
     return -1;
 }
+
 /**
  * Gets total of all salaries
  * @param employee *eEmployee pointer to array of structs of type eEmployee

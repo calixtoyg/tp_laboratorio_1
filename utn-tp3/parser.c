@@ -13,8 +13,6 @@ int isFileEmpty(FILE *pFile);
  * pasar casi todo aca
  */
 int parser_EmployeeFromText(FILE *pFile, LinkedList *pArrayListEmployee) {
-    FILE *pFileBinary;
-    pFileBinary = fopen("data-binary", "wb+");
     int readLine, i = 1;
     char id[50], name[50], salary[50], manHours[50];
     if (isFileEmpty(pFile)) {
@@ -27,18 +25,47 @@ int parser_EmployeeFromText(FILE *pFile, LinkedList *pArrayListEmployee) {
             if (atoi(id) && atoi(salary) && atoi(manHours)) {
 
                 Employee *employee = employee_newWithData(atoi(id), name, atoi(salary), atoi(manHours));
-                fwrite(employee, sizeof(Employee), 1, pFileBinary);
-//                ll_add(pArrayListEmployee, employee);
+//                fwrite(employee, sizeof(Employee), 1, pFileBinary);
+                ll_add(pArrayListEmployee, employee);
             } else {
                 printf("Linea %d contiene uno o mas caracteres que no son numeros.\n", i);
             }
             i++;
         }
     } while (!feof(pFile));
-    fclose(pFileBinary);
+    fclose(pFile);
 
     return 1;
 }
+
+//int parser_EmployeeFromText(FILE *pFile, LinkedList *pArrayListEmployee) {
+//    FILE *pFileBinary;
+//    pFileBinary = fopen("data-binary", "wb+");
+//    int readLine, i = 1;
+//    char id[50], name[50], salary[50], manHours[50];
+//    if (isFileEmpty(pFile)) {
+//        return -1;
+//    }
+//    readLine = fscanf(pFile, "%[^,],%[^,],%[^,],%[^\n]\n", id, name, salary, manHours);
+//    do {
+//        readLine = fscanf(pFile, "%[^,],%[^,],%[^,],%[^\n]\n", id, name, salary, manHours);
+//        if (readLine == 4) {
+//            if (atoi(id) && atoi(salary) && atoi(manHours)) {
+//
+//                Employee *employee = employee_newWithData(atoi(id), name, atoi(salary), atoi(manHours));
+//                fwrite(employee, sizeof(Employee), 1, pFileBinary);
+//                ll_add(pArrayListEmployee, employee);
+//            } else {
+//                printf("Linea %d contiene uno o mas caracteres que no son numeros.\n", i);
+//            }
+//            i++;
+//        }
+//    } while (!feof(pFile));
+//    fclose(pFileBinary);
+//
+//    return 1;
+//}
+
 
 /** \brief Parsea los datos los datos de los empleados desde el archivo data.csv (modo binario).
  *
@@ -48,7 +75,6 @@ int parser_EmployeeFromText(FILE *pFile, LinkedList *pArrayListEmployee) {
  *
  */
 int parser_EmployeeFromBinary(FILE *pFile, LinkedList *pArrayListEmployee) {
-    int i=0;
     if (isFileEmpty(pFile)) {
         return -1;
     }

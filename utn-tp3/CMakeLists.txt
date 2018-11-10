@@ -13,6 +13,7 @@ add_executable(utn_tp3
         Employee.h
         LinkedList.a
         LinkedList.h
+        LinkedList.c
         functionsForProjects.c
         functionsForProjects.h
         main.c

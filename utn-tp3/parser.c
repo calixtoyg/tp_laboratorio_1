@@ -78,6 +78,9 @@ int parser_EmployeeFromBinary(FILE *pFile, LinkedList *pArrayListEmployee) {
     if (isFileEmpty(pFile)) {
         return -1;
     }
+    if (pArrayListEmployee == NULL){
+        pArrayListEmployee = ll_newLinkedList();
+    }
     do {
         Employee *employee = employee_new();
         if(fread(employee, sizeof(Employee), 1, pFile) == 1){

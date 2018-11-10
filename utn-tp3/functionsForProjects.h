@@ -30,3 +30,5 @@ int employeesAboveAverage(eEmployee* employee,int len);
 void toUpperLastNameAndName(eEmployee employee[], int len);
 int modifyEmployee(eEmployee[],int len, int id, char name[],char lastName[],float salary,int sector);
 float getAllSalaries(eEmployee[],int len);
+
+int converYesOrNoToInteger(char *c);

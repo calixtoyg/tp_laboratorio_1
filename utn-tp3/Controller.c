@@ -16,7 +16,7 @@
 int controller_loadFromText(char *path, LinkedList *pArrayListEmployee) {
     FILE *pFile;
     pFile = fopen(path, "r");
-    if (pFile == NULL){
+    if (pFile == NULL) {
         printf("El archivo no se puede abrir o esta vacio.\n");
         return -1;
     }
@@ -35,7 +35,7 @@ int controller_loadFromText(char *path, LinkedList *pArrayListEmployee) {
  */
 int controller_loadFromBinary(char *path, LinkedList *pArrayListEmployee) {
     FILE *pFile = fopen(path, "rb");
-    if (pFile == NULL){
+    if (pFile == NULL) {
         printf("El archivo no se puede abrir o esta vacio.\n");
         return -1;
     }
@@ -75,7 +75,7 @@ int controller_addEmployee(LinkedList *pArrayListEmployee) {
  *
  */
 int controller_editEmployee(LinkedList *pArrayListEmployee) {
-    if (ll_isEmpty(pArrayListEmployee)){
+    if (ll_isEmpty(pArrayListEmployee)) {
         return -1;
     }
     LinkedList *temp;
@@ -107,7 +107,7 @@ int controller_editEmployee(LinkedList *pArrayListEmployee) {
  *
  */
 int controller_removeEmployee(LinkedList *pArrayListEmployee) {
-    if (ll_isEmpty(pArrayListEmployee)){
+    if (ll_isEmpty(pArrayListEmployee)) {
         return -1;
     }
     int id;
@@ -129,7 +129,7 @@ int controller_removeEmployee(LinkedList *pArrayListEmployee) {
  *
  */
 int controller_ListEmployee(LinkedList *pArrayListEmployee) {
-    if (ll_isEmpty(pArrayListEmployee)){
+    if (ll_isEmpty(pArrayListEmployee)) {
         return -1;
     }
     if (ll_print(pArrayListEmployee) == -1)
@@ -145,6 +145,7 @@ int controller_ListEmployee(LinkedList *pArrayListEmployee) {
  *
  */
 int controller_sortEmployee(LinkedList *pArrayListEmployee) {
+//    ll_sort(pArrayListEmployee,)
     return 1;
 }
 
@@ -156,25 +157,25 @@ int controller_sortEmployee(LinkedList *pArrayListEmployee) {
  *
  */
 int controller_saveAsText(char *path, LinkedList *pArrayListEmployee) {
-    FILE* pFile;
-    int i=0;
+    FILE *pFile;
+    int i = 0, removeSuccesful;
     Employee *employee;
     LinkedList *listCloned = ll_newLinkedList();
     listCloned = ll_clone(pArrayListEmployee);
-    pFile = fopen(path, "a+");
-    if (pFile == NULL){
+    pFile = fopen(path, "w+");
+    if (pFile == NULL) {
         return -1;
     }
-    if (ll_isEmpty(pArrayListEmployee)){
+    if (ll_isEmpty(pArrayListEmployee)) {
         fclose(pFile);
         return -1;
     }
-    do{
+    do {
 
-        employee = ll_get(listCloned,i);
+        employee = ll_get(listCloned, i);
         fwrite(employee, sizeof(Employee), 1, pFile);
-
-    }while(ll_remove(listCloned, 0) != 0) ;
+        removeSuccesful = ll_remove(listCloned, 0);
+    } while (removeSuccesful != -1);
     fclose(pFile);
     return 1;
 }
@@ -187,25 +188,25 @@ int controller_saveAsText(char *path, LinkedList *pArrayListEmployee) {
  *
  */
 int controller_saveAsBinary(char *path, LinkedList *pArrayListEmployee) {
-    FILE* pFile;
-    int i=0;
+    FILE *pFile;
+    int i = 0, returnValueFromRemove;
     Employee *employee;
     LinkedList *listCloned = ll_newLinkedList();
     listCloned = ll_clone(pArrayListEmployee);
     pFile = fopen(path, "wb+");
-    if (pFile == NULL){
+    if (pFile == NULL) {
         return -1;
     }
-    if (ll_isEmpty(pArrayListEmployee)){
+    if (ll_isEmpty(pArrayListEmployee)) {
         fclose(pFile);
         return -1;
     }
-    do{
+    do {
 
-        employee = ll_get(listCloned,i);
+        employee = ll_get(listCloned, i);
         fwrite(employee, sizeof(Employee), 1, pFile);
-
-    }while(ll_remove(listCloned, 0) != 0) ;
+        returnValueFromRemove = ll_remove(listCloned, 0);
+    } while (returnValueFromRemove != -1);
     fclose(pFile);
     return 1;
 

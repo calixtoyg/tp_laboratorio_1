@@ -261,8 +261,10 @@ int findEmployeeById(eEmployee employee[], int len, int id) {
 int isValidMenu(int menu, int min, int max) {
     if (menu >= min && menu <= max) {
         return 1;
-    } else
+    } else{
+        printf("La opcion elegida no es un menu valido. \n");
         return 0;
+    }
 }
 
 /**
@@ -468,6 +470,20 @@ int modifyEmployee(eEmployee *employee, int len, int id, char name[], char lastN
     }
     printf("Operacion cancelada, no se pudo modificar al empleado.\n");
     return -1;
+}
+
+int converYesOrNoToInteger(char *c){
+    if(*c == 'Y' || *c == 'y' || *c == 'N' || *c == 'n'){
+        if (*c == 'Y' || *c == 'y' )
+            *c = 1;
+        if (*c == 'N' || *c == 'n' )
+            *c = 0;
+    }else if(*c == 0 || *c == 1){
+        return 0;
+    }else
+        return -1;
+    return 0;
+
 }
 
 /**

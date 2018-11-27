@@ -52,7 +52,7 @@ int controller_loadFromBinary(char *path, LinkedList *pArrayListEmployee) {
  *
  */
 int controller_addEmployee(LinkedList *pArrayListEmployee) {
-    if (!ll_isEmpty(pArrayListEmployee))
+    if (ll_isEmpty(pArrayListEmployee))
         return -1;
 
     char nombre[50];

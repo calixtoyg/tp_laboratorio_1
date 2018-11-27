@@ -53,3 +53,52 @@
 	"LinkedList.h"
 	"Employee.h"
 
+1543356464 source:c:\users\alumno\desktop\nueva carpeta\tp_laboratorio_1\utn-tp3\controller.c
+	<stdio.h>
+	<stdlib.h>
+	"LinkedList.h"
+	"Employee.h"
+	"parser.h"
+	"functionsForProjects.h"
+
+1543356464 c:\users\alumno\desktop\nueva carpeta\tp_laboratorio_1\utn-tp3\linkedlist.h
+
+1543356464 c:\users\alumno\desktop\nueva carpeta\tp_laboratorio_1\utn-tp3\employee.h
+	"LinkedList.h"
+
+1543356464 c:\users\alumno\desktop\nueva carpeta\tp_laboratorio_1\utn-tp3\parser.h
+
+1543356464 c:\users\alumno\desktop\nueva carpeta\tp_laboratorio_1\utn-tp3\functionsforprojects.h
+
+1543356464 source:c:\users\alumno\desktop\nueva carpeta\tp_laboratorio_1\utn-tp3\employee.c
+	"Employee.h"
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<ctype.h>
+
+1543356464 source:c:\users\alumno\desktop\nueva carpeta\tp_laboratorio_1\utn-tp3\main.c
+	<stdio.h>
+	<stdlib.h>
+	<io.h>
+	<ctype.h>
+	"LinkedList.h"
+	"Controller.h"
+	"Employee.h"
+	"functionsForProjects.h"
+
+1543356464 c:\users\alumno\desktop\nueva carpeta\tp_laboratorio_1\utn-tp3\controller.h
+
+1543356464 source:c:\users\alumno\desktop\nueva carpeta\tp_laboratorio_1\utn-tp3\parser.c
+	<stdio.h>
+	<stdlib.h>
+	"LinkedList.h"
+	"Employee.h"
+
+1543356464 source:c:\users\alumno\desktop\nueva carpeta\tp_laboratorio_1\utn-tp3\functionsforprojects.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<ctype.h>
+	"functionsForProjects.h"
+
